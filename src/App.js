@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Spline scene="https://prod.spline.design/NwqqNy6qm8Nea8Yo/scene.splinecode" />
+        <Spline scene="https://draft.spline.design/jhAWZbi309KdWgll/scene.splinecode" />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
