@@ -1,5 +1,5 @@
 import Spline from '@splinetool/react-spline';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import cpp from "../img/C++.png";
 import python from "../img/Python.png";
 import js from "../img/JS.png";
@@ -24,8 +24,12 @@ import postgres from "../img/Postgres.png";
 import mariadb from "../img/MariaDB.png";
 import mongodb from "../img/mongoDB.png";
 import mysql from "../img/MySQL.png";
+import email from "../img/Email.gif";
 import { WiMoonAltNew } from "react-icons/wi";
 import { WiMoonAltFull } from "react-icons/wi";
+import React from 'react';
+import emailjs from '@emailjs/browser';
+import { FaLinkedin, FaGithubSquare } from "react-icons/fa";
 
 function Home() {
     const [Card1, setCard1] = useState(0);
@@ -33,6 +37,20 @@ function Home() {
     const [Card3, setCard3] = useState(0);
     const [Card4, setCard4] = useState(0);
 
+    const form = useRef();
+
+    const sendEmail = (e) => {
+      e.preventDefault();
+
+    emailjs.sendForm('service_q73wqf4', 'template_o1dgmkf', form.current, '4Utl-qsFakTzZqR_R')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+      e.target.reset();
+      alert("Message Sent!");
+    };
 
     const settingCard = (cardNum, cardMax, cardMethod) => {
       if(cardNum === cardMax)
@@ -51,10 +69,8 @@ function Home() {
           return <div className='text-center w-56'>
           <div className='pb-12 text-black font-mono font-bold text-lg lg:text-3xl'>Languages</div>
           <img className='w-full pb-8' alt="python icon" src={python}></img>
-          <div className='text-black font-bold text-xl'>Python</div>
-          <div className='text-black font-bold'>Proficiency Level:</div>
-          <div className='text-yellow-600 font-bold'>Intermediate</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='text-yellow-600 font-bold text-xl'>Python</div>
+          <div className='pt-5 flex flex-row justify-center'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltNew color='black'/>
             <WiMoonAltFull color='black'/>
@@ -66,10 +82,8 @@ function Home() {
           return <div className='text-center w-48'>
           <div className='pb-12 text-black font-mono font-bold text-lg lg:text-3xl'>Languages</div>
           <img className='w-full pb-8 drop-shadow-2xl' alt='javascript icon' src={js}></img>
-          <div className='text-black font-bold text-xl'>Javascript</div>
-          <div className='text-black font-bold'>Proficiency Level:</div>
-          <div className='text-[#379683] font-bold'>Advanced</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='text-[#EFD81B] font-bold text-xl'>Javascript</div>
+          <div className='pt-5 flex flex-row justify-center'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltNew color='black'/>
@@ -81,10 +95,8 @@ function Home() {
           return <div className='text-center w-72'>
           <div className='pb-16 text-black font-mono font-bold text-lg lg:text-3xl'>Languages</div>
           <img className='w-full pb-16 drop-shadow-2xl' alt='html and css icon' src={htmlcss}></img>
-          <div className='text-black font-bold text-xl'>HTML and CSS</div>
-          <div className='text-black font-bold'>Proficiency Level:</div>
-          <div className='text-yellow-600 font-bold'>Intermediate</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='text-[#244BDD] font-bold text-xl'>HTML and CSS</div>
+          <div className='pt-5 flex flex-row justify-center'>
             <WiMoonAltFull color='#05386B'/>
             <WiMoonAltFull color='#05386B'/>
             <WiMoonAltFull color='#05386B'/>
@@ -96,10 +108,8 @@ function Home() {
           return <div className='text-center w-40'>
           <div className='pb-14 text-black font-mono font-bold text-lg lg:text-3xl'>Languages</div>
           <img className='w-full pb-8 drop-shadow-2xl' alt='sql icon' src={sql}></img>
-          <div className='text-black font-bold text-xl'>SQL</div>
-          <div className='text-black font-bold'>Proficiency Level:</div>
-          <div className='text-yellow-600 font-bold'>Intermediate</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='text-[#9C27B0] font-bold text-xl'>SQL</div>
+          <div className='pt-5 flex flex-row justify-center'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
@@ -111,10 +121,8 @@ function Home() {
           return <div className='text-center w-48'>
             <div className='pb-12 text-black font-mono font-bold text-lg lg:text-3xl'>Languages</div>
             <img className='w-full pb-8 drop-shadow-2xl' alt='C++ icon' src={cpp}></img>
-            <div className='text-black font-bold text-xl'>C++</div>
-            <div className='text-black font-bold'>Proficiency Level:</div>
-            <div className='text-[#379683] font-bold'>Advanced</div>
-            <div className='pt-2 flex flex-row justify-center'>
+            <div className='text-[#379683] font-bold text-xl'>C++</div>
+            <div className='pt-5 flex flex-row justify-center'>
               <WiMoonAltNew color='black'/>
               <WiMoonAltFull color='black'/>
               <WiMoonAltFull color='black'/>
@@ -415,16 +423,17 @@ function Home() {
 
     return (
       <div className='bg-black overflow-x-hidden'>
-        <div className='absolute gap-10 right-10 top-5 flex flex-nowrap text:lg lg:text-2xl'>
+        <div className='z-10 px-10 fixed gap-8 right-0 top-4 flex flex-nowrap text:lg lg:text-2xl'>
+          <a href='#Home' className='text-[#05386B] font-mono font-semibold text-center hover:text-[#379683] hover:cursor-pointer'>Home</a>
           <a href='#AboutMe' className='text-[#05386B] font-mono font-semibold text-center hover:text-[#379683] hover:cursor-pointer'>About</a>
           <a href="#Works" className='text-[#05386B] font-mono font-semibold text-center hover:text-[#379683] hover:cursor-pointer'>Works</a>
           <a href="#Skills" className='text-[#05386B] font-mono font-semibold text-center hover:text-[#379683] hover:cursor-pointer'>Skills</a>
           <a href="#Contact" className='text-[#05386B] font-mono font-semibold text-center hover:text-[#379683] hover:cursor-pointer'>Contact</a>
         </div>
-        <Spline scene="https://prod.spline.design/bv0CXaBMvLlpjPRv/scene.splinecode"/>
+        <Spline id='Home' scene="https://prod.spline.design/bv0CXaBMvLlpjPRv/scene.splinecode"/>
         <div className='h-10 bg-gradient-to-b from-[#00DE8E] to-[#EBF5DF] ..."'></div>
         <div id='AboutMe' className='bg-[#EBF5DF] w-screen h-screen relative'>
-          <div className='absolute left-0 right-0 ml-auto mr-auto top-10 text-[#5CDB95] font-serif font-extrabold lg:text-5xl text-2xl w-64'>
+          <div className='absolute left-0 right-0 ml-auto mr-auto top-12 text-[#5CDB95] font-serif font-extrabold lg:text-5xl text-2xl w-64'>
             About Me
           </div>
           <div className='absolute top-[23%] w-[45%] left-[12%] lg:text-lg md:text-sm text-xs font-mono'>
@@ -442,7 +451,7 @@ function Home() {
           />
           </div>
         </div>
-        <div id='Works' className='bg-[#EBF5DF] w-screen h-screen relative'>
+        <div id='Works' className='bg-[#EBF5DF] w-screen h-screen relative flex'>
           <Spline scene='https://prod.spline.design/dyXEZSxwUAoXRJcy/scene.splinecode'/>
         </div>
         <div className='h-10 bg-gradient-to-b from-[#EBF5DF] to-[#8EE4AF] ..."'></div>
@@ -462,6 +471,29 @@ function Home() {
               {card4(Card4)}
             </div>
           </div>
+        </div>
+        <div id='Contact' className='w-screen h-screen relative'>
+          <div className='absolute text-[#05386B] top-20 left-[10%] font-serif font-extrabold lg:text-4xl text-2xl'>Contact Me</div>
+          <div className='absolute text-[#05386B] top-36 left-[10%] font-serif font-extrabold lg:text-xl text-base'>Let's chat and create something together!</div>
+          <Spline className='absolute left-[30%] pt-10' scene='https://prod.spline.design/GYkkHwqjjpioNTaj/scene.splinecode' />
+          <div className='bg-[#EBF5DF] rounded-md shadow-2xl absolute h-[60%] top-[30%] left-[6%] w-[50%]'>
+            <form className='flex flex-col pl-10 mt-12' ref={form} onSubmit={sendEmail}>
+              <label className='text-[#05386B] font-bold font-serif'>Name</label>
+              <input className='w-[40%] pl-1' type="text" name="user_name" />
+              <label className='text-[#05386B] font-bold font-serif pt-5'>Email</label>
+              <input className='w-[40%] pl-1' type="email" name="user_email" />
+              <label className='text-[#05386B] font-bold font-serif pt-5'>Message</label>
+              <textarea className='w-[40%] pl-1' rows="5" name="message" />
+              <input className='w-20 bg-[#05386B] text-white mt-5' type="submit" value="Send" />
+              <img className='absolute w-64 h-32 mt-20 left-[50%]' src={email} alt="email gif"></img>
+              <div className='flex absolute left-[50%] top-72 gap-3'>
+                <a href="https://linkedin.com/in/david-chen13"><FaLinkedin color='#05386B' size={40} /></a>
+                <a href="https://github.com/dchen628"><FaGithubSquare color='#05386B' size={40}/></a>
+              </div>
+            </form>
+          </div>
+          <div className='bg-[#8EE4AF] h-[40%]'></div>
+          <div className='bg-[#EBF5DF] h-[60%]'></div>
         </div>
       </div>
     );
