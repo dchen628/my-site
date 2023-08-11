@@ -430,9 +430,14 @@ function Home() {
           <a href="#Skills" className='text-[#05386B] font-mono font-semibold text-center hover:text-[#379683] hover:cursor-pointer'>Skills</a>
           <a href="#Contact" className='text-[#05386B] font-mono font-semibold text-center hover:text-[#379683] hover:cursor-pointer'>Contact</a>
         </div>
-        <Spline id='Home' scene="https://prod.spline.design/bv0CXaBMvLlpjPRv/scene.splinecode"/>
+        <div id='Home' className='bg-[#EBF5DF] w-screen h-screen relative flex'>
+          <Spline scene="https://prod.spline.design/mFwVTqprDaF3MLiK/scene.splinecode"/>
+        </div>
         <div className='h-10 bg-gradient-to-b from-[#00DE8E] to-[#EBF5DF] ..."'></div>
         <div id='AboutMe' className='bg-[#EBF5DF] w-screen h-screen relative'>
+          <Spline
+            scene='https://prod.spline.design/SZ7D7DzR88JbvTOT/scene.splinecode'
+          />
           <div className='absolute left-0 right-0 ml-auto mr-auto top-12 text-[#5CDB95] font-serif font-extrabold lg:text-5xl text-2xl w-64'>
             About Me
           </div>
@@ -446,9 +451,9 @@ function Home() {
             From creating interactive games to implementing a practical game engine to collaborating with fellow developers, I thrive on learning new technologies and embracing new opportunities. Passionate about coding and problem-solving, I'm eager to contribute my skills and experiences to make an impact on future projects in this ever-changing field.
           </div>
           <div className='w-screen'>
-          <Spline
+          {/* <Spline
             scene='https://prod.spline.design/SZ7D7DzR88JbvTOT/scene.splinecode'
-          />
+          /> */}
           </div>
         </div>
         <div id='Works' className='bg-[#EBF5DF] w-screen h-screen relative flex'>
