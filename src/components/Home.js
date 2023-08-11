@@ -1,5 +1,5 @@
 import Spline from '@splinetool/react-spline';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import cpp from "../img/C++.png";
 import python from "../img/Python.png";
 import js from "../img/JS.png";
@@ -37,6 +37,19 @@ function Home() {
     const [Card3, setCard3] = useState(0);
     const [Card4, setCard4] = useState(0);
 
+    const [smallScreen, setSmallScreen] = useState(window.innerWidth <= 768);
+
+    useEffect(() => {
+      const pageResize = () => {
+        setSmallScreen(window.innerWidth <= 768);
+      };
+      window.addEventListener('resize', pageResize);
+
+      return () => {
+        window.removeEventListener('resize', pageResize);
+      };
+    }, []);
+
     const form = useRef();
 
     const sendEmail = (e) => {
@@ -67,10 +80,10 @@ function Home() {
       switch(cards) {
         case 1:
           return <div className='text-center w-56'>
-          <div className='pb-12 text-black font-mono font-bold text-lg lg:text-3xl'>Languages</div>
+          <div className='pb-12 text-black font-mono font-bold text-xs lg:text-3xl'>Languages</div>
           <img className='w-full pb-8' alt="python icon" src={python}></img>
           <div className='text-yellow-600 font-bold text-xl'>Python</div>
-          <div className='pt-5 flex flex-row justify-center'>
+          <div className='pt-5 flex flex-row justify-center w-[50%] ml-7 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltNew color='black'/>
             <WiMoonAltFull color='black'/>
@@ -80,10 +93,10 @@ function Home() {
         </div>;
         case 2:
           return <div className='text-center w-48'>
-          <div className='pb-12 text-black font-mono font-bold text-lg lg:text-3xl'>Languages</div>
+          <div className='pb-12 text-black font-mono font-bold text-xs lg:text-3xl'>Languages</div>
           <img className='w-full pb-8 drop-shadow-2xl' alt='javascript icon' src={js}></img>
           <div className='text-[#EFD81B] font-bold text-xl'>Javascript</div>
-          <div className='pt-5 flex flex-row justify-center'>
+          <div className='pt-5 flex flex-row justify-center w-[50%] ml-7 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltNew color='black'/>
@@ -93,10 +106,10 @@ function Home() {
         </div>;
         case 3:
           return <div className='text-center w-72'>
-          <div className='pb-16 text-black font-mono font-bold text-lg lg:text-3xl'>Languages</div>
+          <div className='pb-16 text-black font-mono font-bold text-xs lg:text-3xl'>Languages</div>
           <img className='w-full pb-16 drop-shadow-2xl' alt='html and css icon' src={htmlcss}></img>
           <div className='text-[#244BDD] font-bold text-xl'>HTML and CSS</div>
-          <div className='pt-5 flex flex-row justify-center'>
+          <div className='pt-5 flex flex-row justify-center w-[50%] ml-7 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='#05386B'/>
             <WiMoonAltFull color='#05386B'/>
             <WiMoonAltFull color='#05386B'/>
@@ -106,10 +119,10 @@ function Home() {
         </div>;
         case 4:
           return <div className='text-center w-40'>
-          <div className='pb-14 text-black font-mono font-bold text-lg lg:text-3xl'>Languages</div>
+          <div className='pb-14 text-black font-mono font-bold text-xs lg:text-3xl'>Languages</div>
           <img className='w-full pb-8 drop-shadow-2xl' alt='sql icon' src={sql}></img>
           <div className='text-[#9C27B0] font-bold text-xl'>SQL</div>
-          <div className='pt-5 flex flex-row justify-center'>
+          <div className='pt-5 flex flex-row justify-center w-[50%] ml-7 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
@@ -119,10 +132,10 @@ function Home() {
         </div>;
         default:
           return <div className='text-center w-48'>
-            <div className='pb-12 text-black font-mono font-bold text-lg lg:text-3xl'>Languages</div>
+            <div className='pb-12 text-black font-mono font-bold text-xs lg:text-3xl'>Languages</div>
             <img className='w-full pb-8 drop-shadow-2xl' alt='C++ icon' src={cpp}></img>
             <div className='text-[#379683] font-bold text-xl'>C++</div>
-            <div className='pt-5 flex flex-row justify-center'>
+            <div className='pt-5 flex flex-row justify-center w-[50%] ml-7 lg:w-full lg:ml-0'>
               <WiMoonAltNew color='black'/>
               <WiMoonAltFull color='black'/>
               <WiMoonAltFull color='black'/>
@@ -137,10 +150,10 @@ function Home() {
       switch(cards) {
         case 1:
           return <div className='text-center w-60'>
-          <div className='pb-12 text-black font-mono font-bold text-lg lg:text-3xl'>Frameworks</div>
+          <div className='pb-12 text-black font-mono font-bold text-xs lg:text-3xl'>Frameworks</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='node.js icon' src={node}></img>
           <div className='text-[#79B262] font-bold text-xl'>Node.js</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-8 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltNew color='black'/>
             <WiMoonAltFull color='black'/>
@@ -151,10 +164,10 @@ function Home() {
         </div>;
         case 2:
           return <div className='text-center w-60'>
-          <div className='pb-12 text-black font-mono font-bold text-lg lg:text-3xl'>Frameworks</div>
+          <div className='pb-12 text-black font-mono font-bold text-xs lg:text-3xl'>Frameworks</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='express icon' src={express}></img>
           <div className='text-yellow-500 font-bold text-xl'>Express</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-8 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltNew color='black'/>
@@ -165,10 +178,10 @@ function Home() {
         </div>;
         case 3:
           return <div className='text-center w-72'>
-          <div className='pb-12 text-black font-mono font-bold text-lg lg:text-3xl'>Frameworks</div>
+          <div className='pb-12 text-black font-mono font-bold text-xs lg:text-3xl'>Frameworks</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='bootstrap icon' src={bootstrap}></img>
           <div className='text-[#8411F5] font-bold text-xl'>Bootstrap</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-8 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
@@ -179,10 +192,10 @@ function Home() {
         </div>;
         case 4:
           return <div className='text-center w-72'>
-          <div className='pb-12 text-black font-mono font-bold text-lg lg:text-3xl'>Frameworks</div>
+          <div className='pb-12 text-black font-mono font-bold text-xs lg:text-3xl'>Frameworks</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='Tailwind.css icon' src={tailwind}></img>
           <div className='pt-10 text-[#06B0CE] font-bold text-xl'>Tailwind CSS</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-8 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
@@ -193,10 +206,10 @@ function Home() {
         </div>;
         case 5:
           return <div className='text-center w-64'>
-          <div className='pb-12 text-black font-mono font-bold text-lg lg:text-3xl'>Frameworks</div>
+          <div className='pb-12 text-black font-mono font-bold text-xs lg:text-3xl'>Frameworks</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='mui icon' src={mui}></img>
           <div className='text-[#027FFE] font-bold text-xl'>Material UI</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-8 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
@@ -207,10 +220,10 @@ function Home() {
         </div>;
         default:
           return <div className='text-center w-56'>
-          <div className='pb-12 text-black font-mono font-bold text-lg lg:text-3xl'>Frameworks</div>
+          <div className='pb-12 text-black font-mono font-bold text-xs lg:text-3xl'>Frameworks</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='react icon' src={react}></img>
           <div className='text-[#5FD3F3] font-bold text-xl'>React</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-8 lg:w-full lg:ml-0'>
             <WiMoonAltNew color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
@@ -226,10 +239,10 @@ function Home() {
       switch(cards) {
         case 1:
           return <div className='text-center w-48'>
-          <div className='pb-16 text-black font-mono font-bold text-lg lg:text-3xl'>Developer Tools</div>
+          <div className='pb-16 text-black font-mono font-bold text-xs lg:text-3xl'>Developer Tools</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='vs code icon' src={vsc}></img>
           <div className='text-[#3DAAF2] font-bold text-xl'>Visual Studio Code</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-9 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltNew color='black'/>
             <WiMoonAltFull color='black'/>
@@ -241,10 +254,10 @@ function Home() {
         </div>;
         case 2:
           return <div className='text-center w-48'>
-          <div className='pb-16 text-black font-mono font-bold text-lg lg:text-3xl'>Developer Tools</div>
+          <div className='pb-16 text-black font-mono font-bold text-xs lg:text-3xl'>Developer Tools</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='vs icon' src={vs}></img>
           <div className='text-[#9060C9] font-bold text-xl'>Visual Studio</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-9 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltNew color='black'/>
@@ -256,10 +269,10 @@ function Home() {
         </div>;
         case 3:
           return <div className='text-center w-48'>
-          <div className='pb-16 text-black font-mono font-bold text-lg lg:text-3xl'>Developer Tools</div>
+          <div className='pb-16 text-black font-mono font-bold text-xs lg:text-3xl'>Developer Tools</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='firebase icon' src={firebase}></img>
           <div className='text-[#FFCB2B] font-bold text-xl'>Firebase</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-9 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
@@ -271,10 +284,10 @@ function Home() {
         </div>;
         case 4:
           return <div className='text-center w-48'>
-          <div className='pb-16 text-black font-mono font-bold text-lg lg:text-3xl'>Developer Tools</div>
+          <div className='pb-16 text-black font-mono font-bold text-xs lg:text-3xl'>Developer Tools</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='postman icon' src={postman}></img>
           <div className='text-[#FC6C35] font-bold text-xl'>Postman</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-9 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
@@ -286,10 +299,10 @@ function Home() {
         </div>;
         case 5:
           return <div className='text-center w-48'>
-          <div className='pb-16 text-black font-mono font-bold text-lg lg:text-3xl'>Developer Tools</div>
+          <div className='pb-16 text-black font-mono font-bold text-xs lg:text-3xl'>Developer Tools</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='cmake icon' src={cmake}></img>
           <div className='text-[#4188A4] font-bold text-xl'>CMake</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-9 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
@@ -301,10 +314,10 @@ function Home() {
         </div>;
         case 6:
           return <div className='text-center w-48'>
-          <div className='pb-12 text-black font-mono font-bold text-lg lg:text-3xl'>Developer Tools</div>
+          <div className='pb-12 text-black font-mono font-bold text-xs lg:text-3xl'>Developer Tools</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='chrome devtool icon' src={chromedt}></img>
           <div className='text-[#1967D2] font-bold text-xl'>Chrome DevTools</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-9 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
@@ -316,10 +329,10 @@ function Home() {
         </div>;
         default:
           return <div className='text-center w-48'>
-          <div className='pb-20 text-black font-mono font-bold text-lg lg:text-3xl'>Developer Tools</div>
+          <div className='pb-20 text-black font-mono font-bold text-xs lg:text-3xl'>Developer Tools</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='git icon' src={git}></img>
           <div className='text-[#E84E32] font-bold text-xl'>Git/GitHub</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-9 lg:w-full lg:ml-0'>
             <WiMoonAltNew color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
@@ -336,10 +349,10 @@ function Home() {
       switch(cards) {
         case 1:
           return <div className='text-center w-56'>
-          <div className='pb-20 text-black font-mono font-bold text-lg lg:text-3xl'>Databases</div>
+          <div className='pb-20 text-black font-mono font-bold text-xs lg:text-3xl'>Databases</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='firebase storage icon' src={storage}></img>
           <div className='text-[#FFCB2B] font-bold text-xl'>Firebase Storage</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-8 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltNew color='black'/>
             <WiMoonAltFull color='black'/>
@@ -350,10 +363,10 @@ function Home() {
         </div>;
         case 2:
           return <div className='text-center w-48'>
-          <div className='pb-20 text-black font-mono font-bold text-lg lg:text-3xl'>Databases</div>
+          <div className='pb-20 text-black font-mono font-bold text-xs lg:text-3xl'>Databases</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='postgresql icon' src={postgres}></img>
           <div className='text-[#31648C] font-bold text-xl'>PostgreSQL</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-8 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltNew color='black'/>
@@ -364,10 +377,10 @@ function Home() {
         </div>;
         case 3:
           return <div className='text-center w-64'>
-          <div className='pb-20 text-black font-mono font-bold text-lg lg:text-3xl'>Databases</div>
+          <div className='pb-20 text-black font-mono font-bold text-xs lg:text-3xl'>Databases</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='mariadb icon' src={mariadb}></img>
           <div className='text-[#BA7257] font-bold text-xl'>MariaDB</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-8 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
@@ -378,10 +391,10 @@ function Home() {
         </div>;
         case 4:
           return <div className='text-center w-48'>
-          <div className='pb-20 text-black font-mono font-bold text-lg lg:text-3xl'>Databases</div>
+          <div className='pb-20 text-black font-mono font-bold text-xs lg:text-3xl'>Databases</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='mongodb icon' src={mongodb}></img>
           <div className='text-[#429A32] font-bold text-xl'>MongoDB</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-8 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
@@ -392,10 +405,10 @@ function Home() {
         </div>;
         case 5:
           return <div className='text-center w-56'>
-          <div className='pb-20 text-black font-mono font-bold text-lg lg:text-3xl'>Databases</div>
+          <div className='pb-20 text-black font-mono font-bold text-xs lg:text-3xl'>Databases</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='mysql icon' src={mysql}></img>
           <div className='pt-10 text-[#005A84] font-bold text-xl'>MySQL</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-8 lg:w-full lg:ml-0'>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
@@ -406,10 +419,10 @@ function Home() {
         </div>;
         default:
           return <div className='text-center w-48'>
-          <div className='pb-20 text-black font-mono font-bold text-lg lg:text-3xl'>Databases</div>
+          <div className='pb-20 text-black font-mono font-bold text-xs lg:text-3xl'>Databases</div>
           <img className='w-full pb-4 drop-shadow-2xl' alt='firestore icon' src={firestore}></img>
           <div className='text-[#FFCB2B] font-bold text-xl'>Firestore</div>
-          <div className='pt-2 flex flex-row justify-center'>
+          <div className='pt-2 flex flex-row justify-center w-[50%] ml-8 lg:w-full lg:ml-0'>
             <WiMoonAltNew color='black'/>
             <WiMoonAltFull color='black'/>
             <WiMoonAltFull color='black'/>
@@ -423,7 +436,7 @@ function Home() {
 
     return (
       <div className='bg-black overflow-x-hidden'>
-        <div className='z-10 px-10 fixed gap-8 right-0 top-4 flex flex-nowrap text:lg lg:text-2xl'>
+        <div className='z-10 px-8 lg:px-10 fixed gap-8 right-0 top-4 flex flex-nowrap text-sm lg:text-2xl'>
           <a href='#Home' className='text-[#05386B] font-mono font-semibold text-center hover:text-[#379683] hover:cursor-pointer'>Home</a>
           <a href='#AboutMe' className='text-[#05386B] font-mono font-semibold text-center hover:text-[#379683] hover:cursor-pointer'>About</a>
           <a href="#Works" className='text-[#05386B] font-mono font-semibold text-center hover:text-[#379683] hover:cursor-pointer'>Works</a>
@@ -431,13 +444,20 @@ function Home() {
           <a href="#Contact" className='text-[#05386B] font-mono font-semibold text-center hover:text-[#379683] hover:cursor-pointer'>Contact</a>
         </div>
         <div id='Home' className='bg-[#EBF5DF] w-screen h-screen relative flex'>
-          <Spline scene="https://prod.spline.design/mFwVTqprDaF3MLiK/scene.splinecode"/>
+          {smallScreen ? (
+            <Spline scene='https://prod.spline.design/gpZnHM3HRTxQkm1J/scene.splinecode'/>
+            ) : (
+            <Spline scene="https://prod.spline.design/mFwVTqprDaF3MLiK/scene.splinecode"/>
+          )}
         </div>
         <div className='h-10 bg-gradient-to-b from-[#00DE8E] to-[#EBF5DF] ..."'></div>
         <div id='AboutMe' className='bg-[#EBF5DF] w-screen h-screen relative'>
-          <Spline
-            scene='https://prod.spline.design/SZ7D7DzR88JbvTOT/scene.splinecode'
-          />
+          {smallScreen ? (
+            <Spline scene='https://prod.spline.design/eg5OiIJoWUSMdQ6R/scene.splinecode'/>
+            ) : (
+            <Spline scene='https://prod.spline.design/SZ7D7DzR88JbvTOT/scene.splinecode'
+/>
+          )}
           <div className='absolute left-0 right-0 ml-auto mr-auto top-12 text-[#5CDB95] font-serif font-extrabold lg:text-5xl text-2xl w-64'>
             About Me
           </div>
@@ -451,13 +471,15 @@ function Home() {
             From creating interactive games to implementing a practical game engine to collaborating with fellow developers, I thrive on learning new technologies and embracing new opportunities. Passionate about coding and problem-solving, I'm eager to contribute my skills and experiences to make an impact on future projects in this ever-changing field.
           </div>
           <div className='w-screen'>
-          {/* <Spline
-            scene='https://prod.spline.design/SZ7D7DzR88JbvTOT/scene.splinecode'
-          /> */}
+
           </div>
         </div>
         <div id='Works' className='bg-[#EBF5DF] w-screen h-screen relative flex'>
-          <Spline scene='https://prod.spline.design/dyXEZSxwUAoXRJcy/scene.splinecode'/>
+          {smallScreen ? (
+              <Spline scene='https://prod.spline.design/kUTwp9UyKjIh8O1f/scene.splinecode'/>
+              ) : (
+              <Spline scene='https://prod.spline.design/dyXEZSxwUAoXRJcy/scene.splinecode'/>
+          )}
         </div>
         <div className='h-10 bg-gradient-to-b from-[#EBF5DF] to-[#8EE4AF] ..."'></div>
         <div id='Skills' className='bg-[#8EE4AF] w-screen h-screen relative flex'>
