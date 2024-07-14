@@ -30,6 +30,7 @@ import { WiMoonAltFull } from "react-icons/wi";
 import React from 'react';
 import emailjs from '@emailjs/browser';
 import { FaLinkedin, FaGithubSquare } from "react-icons/fa";
+import DotLoader from "react-spinners/DotLoader";
 
 function Home() {
     const [Card1, setCard1] = useState(0);
@@ -37,6 +38,7 @@ function Home() {
     const [Card3, setCard3] = useState(0);
     const [Card4, setCard4] = useState(0);
 
+    const [loadingScreen, setLoadingScreen] = useState('true');
     const [smallScreen, setSmallScreen] = useState(window.innerWidth <= 768);
 
     useEffect(() => {
@@ -49,6 +51,16 @@ function Home() {
         window.removeEventListener('resize', pageResize);
       };
     }, []);
+
+    useEffect(() => {
+      const timeOut = setTimeout(() => {
+        setLoadingScreen(false);
+      }, 1500);
+
+      return () => {
+        clearTimeout(timeOut);
+      }
+    })
 
     const form = useRef();
 
@@ -436,6 +448,13 @@ function Home() {
 
     return (
       <div className='bg-black overflow-x-hidden'>
+        {loadingScreen && 
+        <div className='bg-[#05386B] w-screen h-screen top-0 left-0 flex items-center justify-center'>
+          <DotLoader
+            loading = {loadingScreen}
+            size = {80}
+          />
+        </div>}
         <div className='z-10 px-8 lg:px-10 fixed gap-8 right-0 top-4 flex flex-nowrap text-sm lg:text-2xl'>
           <a href='#Home' className='text-[#05386B] font-mono font-semibold text-center hover:text-[#379683] hover:cursor-pointer'>Home</a>
           <a href='#AboutMe' className='text-[#05386B] font-mono font-semibold text-center hover:text-[#379683] hover:cursor-pointer'>About</a>
@@ -455,8 +474,7 @@ function Home() {
           {smallScreen ? (
             <Spline scene='https://prod.spline.design/eg5OiIJoWUSMdQ6R/scene.splinecode'/>
             ) : (
-            <Spline scene='https://prod.spline.design/SZ7D7DzR88JbvTOT/scene.splinecode'
-/>
+            <Spline scene='https://prod.spline.design/SZ7D7DzR88JbvTOT/scene.splinecode'/>
           )}
           <div className='absolute left-0 right-0 ml-auto mr-auto top-12 text-[#5CDB95] font-serif font-extrabold lg:text-5xl text-2xl w-64'>
             About Me
